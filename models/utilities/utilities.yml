@@ -1,0 +1,31 @@
+
+version: 2
+
+models:
+  - name: util_calendar
+    description: "This utility model transforms a generic calendar source into a more usable format with English month and day names. It includes various date parts and is intended for use in date-related calculations across the project."
+    columns:
+      - name: date
+        description: "The date in a standard DATE format."
+      - name: year
+        description: "The year extracted from the date."
+      - name: quarter
+        description: "The quarter of the year."
+      - name: month
+        description: "The numerical month extracted from the date."
+      - name: day
+        description: "The day of the month."
+      - name: week_day
+        description: "The day of the week represented as an integer (e.g., 1 for Monday)."
+      - name: month_name
+        description: "The full name of the month in English."
+      - name: dayName
+        description: "The full name of the day in English."
+      - name: week
+        description: "The week number within the year."
+      - name: year_week
+        description: "A concatenation of the year and week number, representing the specific week of the year for payment cycles."
+      - name: year_month
+        description: "A numerical representation of the year and month combined."
+      - name: year_month_payroll
+        description: "A numerical representation of the year and month combined, specifically for payroll purposes."
