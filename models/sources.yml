@@ -2,6 +2,11 @@ version: 1
 
 sources:
 
+  - name: generic
+    database: drivfit-data-warehouse
+    tables:
+      - name: calendar
+
   - name: odoo
     database: drivfit-data-warehouse
     tables:
@@ -36,7 +41,7 @@ sources:
       - name: support_ticket_theme
       - name: vehicle_category
 
-- name: quatenus
+  - name: quatenus
     database: drivfit-data-warehouse
     tables:
       - name: extendedEvents
