@@ -19,9 +19,14 @@ sources:
       - name: account_journal
       - name: account_payment
       - name: fleet_vehicle
+      - name: fleet_vehicle_deal
       - name: fleet_vehicle_insurance
+      - name: fleet_vehicle_inspection
+      - name: fleet_vehicle_log_contract
+      - name: fleet_vehicle_cost
       - name: fleet_vehicle_model
       - name: fleet_vehicle_model_brand
+      - name: fleet_vehicle_station
       - name: hr_employee
       - name: hr_department
       - name: ir_translation
