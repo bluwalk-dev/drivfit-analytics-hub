@@ -6,7 +6,7 @@ SELECT
     d.vehicle_license_plate,
     d.vehicle_deal_name,
     CASE
-        WHEN analytic_account_name LIKE '%Agency Cost%' THEN 'Agency cost'
+        WHEN analytic_account_name LIKE '%Agency cost%' THEN 'Agency cost'
         WHEN analytic_account_name LIKE '%Banking and Transaction%' THEN 'Banking & Transaction Fees'
         WHEN analytic_account_name LIKE '%Infleet & Defleet%' THEN 'Infleet & Defleet'
         WHEN analytic_account_name LIKE '%Logistics%' THEN 'Logistics'
