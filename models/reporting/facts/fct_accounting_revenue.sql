@@ -2,7 +2,7 @@ SELECT
     a.id,
     a.date,
     a.name,
-    a.amount,
+    -1 * a.amount,
     a.partner_id,
     a.product_id,
     a.product_code,

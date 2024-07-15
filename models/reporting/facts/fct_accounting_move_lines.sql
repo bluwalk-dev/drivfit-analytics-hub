@@ -9,6 +9,7 @@ SELECT
     a.journal_id,
     b.journal_name,
     a.ref,
+    a.product_id,
     a.account_id,
     c.account_name,
     c.account_code,

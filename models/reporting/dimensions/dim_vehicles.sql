@@ -10,7 +10,8 @@ select
     c.vehicle_model_id,
     c.vehicle_brand_id,
     fuel_type as vehicle_fuel,
-    transmission as vehicle_transmission
+    transmission as vehicle_transmission,
+    a.billing_account_id analytic_account_id
 FROM {{ ref('stg_odoo__fleet_vehicles') }} a
 LEFT JOIN {{ ref('dim_vehicle_deals') }} b ON a.deal_id = b.vehicle_deal_id
 LEFT JOIN {{ ref('dim_vehicle_models') }} c ON a.model_id = c.vehicle_model_id
