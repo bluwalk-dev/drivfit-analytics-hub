@@ -20,7 +20,9 @@ sources:
       - name: account_payment
       - name: fleet_vehicle
       - name: fleet_vehicle_deal
+      - name: fleet_vehicle_damage_log
       - name: fleet_vehicle_insurance
+      - name: fleet_vehicle_insurance_claim
       - name: fleet_vehicle_inspection
       - name: fleet_vehicle_log_contract
       - name: fleet_vehicle_cost
