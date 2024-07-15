@@ -15,6 +15,7 @@ SELECT
         WHEN analytic_account_name LIKE '%Telematics%' THEN 'Telematics & WeProov'
         WHEN analytic_account_name LIKE '%Tolls%' THEN 'Tolls'
         WHEN analytic_account_name LIKE 'FLEET%' THEN CASE
+            WHEN product_code = 'V-INSR-INSR' THEN 'Insurance'
             WHEN product_code LIKE 'V-MAINT%' THEN 'Tyres & Maintenance'
             WHEN product_code LIKE 'V-RECOND%' OR product_code = 'V-INSR-DEDUCTIBLE' THEN 'Damage Repair'
             WHEN product_code LIKE 'V-RENTING%' THEN 'Vehicle Cost'

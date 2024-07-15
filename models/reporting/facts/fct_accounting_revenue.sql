@@ -32,9 +32,6 @@ analytic_lines_ba AS (
         END as revenue_attribution
     FROM {{ ref('fct_accounting_analytic_lines') }} a
     WHERE move_id IS NULL AND analytic_account_type = 'Customer'
-),
-insurance_compensations AS (
-    
 )
 
 SELECT * FROM analytic_lines_ba
