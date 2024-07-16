@@ -4,7 +4,6 @@ analytic_lines_ba AS (
 -- Validate attribution by finding "Vehicle Attribution" without vehicle plate
 -- Validate attribution by finding lines without a product
     SELECT
-        a.id,
         a.date,
         a.name,
         -1 * a.amount as amount,
@@ -32,6 +31,24 @@ analytic_lines_ba AS (
         END as revenue_attribution
     FROM {{ ref('fct_accounting_analytic_lines') }} a
     WHERE move_id IS NULL AND analytic_account_type = 'Customer'
+),
+
+insurance_compensations as (
+    select
+        date,
+        name,
+        -1*balance as amount,
+        NULL partner_id,
+        NULL product_id,
+        '' product_code,
+        '' vehicle_license_plate,
+        '' vehicle_deal_name,
+        'Insurance compensations' as revenue_category,
+        'Generic Revenue' as revenue_attribution
+    from {{ ref('fct_accounting_move_lines') }}
+    where account_code like '7872%'
 )
 
 SELECT * FROM analytic_lines_ba
+UNION ALL
+SELECT * FROM insurance_compensations
