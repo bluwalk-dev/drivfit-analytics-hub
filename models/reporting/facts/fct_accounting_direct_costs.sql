@@ -35,7 +35,8 @@ left join {{ ref('dim_accounting_analytic_accounts') }} b on a.analytic_account_
 left join {{ ref('dim_products') }} c on a.product_id = c.product_id
 left join {{ ref('dim_vehicles') }} d on a.analytic_account_id = d.analytic_account_id
 WHERE
-    a.account_code like '6%' AND 
+    a.move_state = 'posted' AND
+    a.account_code like '6%' AND
     (b.analytic_account_name like '%COS/%' OR b.analytic_account_name like 'FLEET%' OR b.analytic_account_name = 'ACC/OPEX/Clients impairment (loss)') AND
-    product_code != 'V-RECOND-DAMAGES'
+    (product_code != 'V-RECOND-DAMAGES' OR product_code IS NULL)
 
