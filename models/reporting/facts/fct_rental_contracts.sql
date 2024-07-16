@@ -3,7 +3,9 @@ SELECT
     name as rental_contract_name,
     state as rental_contact_state,
     parent_id,
+    b.vehicle_id,
     b.vehicle_license_plate,
+    b.vehicle_deal_id,
     b.vehicle_deal_name, -- Atenção que talvez tenhamos o mesmo carro em mais do que um deal
     b.vehicle_name,
     c.station_name as start_station,
@@ -14,7 +16,8 @@ SELECT
     end_date,
     start_kms,
     end_kms,
-    active
+    active,
+    rate_base_value as daily_base_price
 FROM {{ ref('stg_odoo__rental_contracts') }} a
 LEFT JOIN {{ ref('dim_vehicles') }} b ON a.vehicle_id = b.vehicle_id
 
