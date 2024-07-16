@@ -81,3 +81,34 @@ SELECT
     UNION ALL
     SELECT
         688, 80000, 755, 0.07065, -0.0083
+    
+    -- Lodgy Locarent
+    UNION ALL
+    SELECT
+        688, 40000, 591, 0.07065, -0.0083
+    UNION ALL
+    SELECT
+        688, 50000, 623, 0.07065, -0.0083
+    UNION ALL
+    SELECT
+        688, 60000, 653, 0.07065, -0.0083
+    UNION ALL
+    SELECT
+        688, 70000, 686.8, 0.07065, -0.0083
+    UNION ALL
+    SELECT
+        688, 80000, 755, 0.07065, -0.0083
+    
+    -- e-C4 Leaseplan
+    UNION ALL
+    SELECT
+        681, 50000, 594, 0.085, -0.01
+    UNION ALL
+    SELECT
+        681, 60000, 619, 0.085, -0.01
+    UNION ALL
+    SELECT
+        681, 70000, 648, 0.085, -0.01
+    UNION ALL
+    SELECT
+        681, 80000, 693, 0.085, -0.01
