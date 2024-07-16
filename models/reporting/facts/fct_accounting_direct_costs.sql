@@ -38,5 +38,5 @@ WHERE
     a.move_state = 'posted' AND
     a.account_code like '6%' AND
     (b.analytic_account_name like '%COS/%' OR b.analytic_account_name like 'FLEET%' OR b.analytic_account_name = 'ACC/OPEX/Clients impairment (loss)') AND
-    (product_code != 'V-RECOND-DAMAGES' OR product_code IS NULL)
+    (product_code NOT IN ('V-RECOND-DELIVERY', 'V-RECOND-DAMAGES') OR product_code IS NULL)
 
