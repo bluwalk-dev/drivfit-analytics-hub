@@ -1,6 +1,7 @@
 select
     id as vehicle_id,
     license_plate as vehicle_license_plate,
+    b.vehicle_deal_id,
     b.vehicle_deal_name,
     vin_sn as vehicle_vin,
     c.vehicle_name,

@@ -1,5 +1,6 @@
 SELECT
   a.date,
+  a.year_month,
   b.vehicle_id,
   b.vehicle_deal_name
 FROM {{ ref('util_calendar') }} a

@@ -28,6 +28,7 @@ sources:
       - name: fleet_vehicle_cost
       - name: fleet_vehicle_model
       - name: fleet_vehicle_model_brand
+      - name: fleet_vehicle_odometer
       - name: fleet_vehicle_station
       - name: hr_employee
       - name: hr_department
