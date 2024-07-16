@@ -13,6 +13,7 @@ SELECT
         WHEN analytic_account_name LIKE '%Other%' THEN 'Other'
         WHEN analytic_account_name LIKE '%Sales fee%' THEN 'Discounts'
         WHEN analytic_account_name LIKE '%Telematics%' THEN 'Telematics & WeProov'
+        WHEN analytic_account_name LIKE '%Clients impairment (loss)%' THEN 'Uncollectibles'
         WHEN analytic_account_name LIKE '%Tolls%' THEN 'Tolls'
         WHEN analytic_account_name LIKE 'FLEET%' THEN CASE
             WHEN product_code = 'V-INSR-INSR' THEN 'Insurance'
