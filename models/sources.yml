@@ -6,6 +6,7 @@ sources:
     database: drivfit-data-warehouse
     tables:
       - name: calendar
+      - name: reporting_structure
 
   - name: odoo
     database: drivfit-data-warehouse
