@@ -1,7 +1,7 @@
 SELECT 
     a.date,
     a.name,
-    b.analytic_account_name,
+    a.analytic_account_name,
     c.product_code,
     d.vehicle_license_plate,
     d.vehicle_deal_name,
@@ -31,12 +31,11 @@ SELECT
     END as cost_attribution,
     balance amount
 from {{ ref('fct_accounting_move_lines') }} a
-left join {{ ref('dim_accounting_analytic_accounts') }} b on a.analytic_account_id = b.analytic_account_id
 left join {{ ref('dim_products') }} c on a.product_id = c.product_id
 left join {{ ref('dim_vehicles') }} d on a.analytic_account_id = d.analytic_account_id
 WHERE
     a.move_state = 'posted' AND
     a.account_code like '6%' AND
-    (b.analytic_account_name like '%COS/%' OR b.analytic_account_name like 'FLEET%' OR b.analytic_account_name = 'ACC/OPEX/Clients impairment (loss)') AND
+    (analytic_account_name like '%COS/%' OR analytic_account_name like 'FLEET%' OR analytic_account_name = 'ACC/OPEX/Clients impairment (loss)') AND
     (product_code NOT IN ('V-RECOND-DELIVERY', 'V-RECOND-DAMAGES', 'V-RECOND-DAMAGE-EXTRA') OR product_code IS NULL)
 
