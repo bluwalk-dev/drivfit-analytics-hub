@@ -20,7 +20,7 @@ SELECT
     a.tax_line_id,
     a.analytic_account_id,
     e.analytic_account_name,
-    a.vehicle_id,
+    IFNULL(a.vehicle_id, e.vehicle_id) vehicle_id,
     a.full_reconcile_id,
     a.payment_id,
     a.create_date

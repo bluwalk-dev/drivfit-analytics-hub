@@ -3,6 +3,7 @@ WITH reporting_structure AS (
     FROM {{ ref('dim_reporting_structure') }}
 )
 
+
 SELECT
     d.year_month,
     a.date,
