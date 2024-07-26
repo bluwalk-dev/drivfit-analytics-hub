@@ -1,5 +1,10 @@
--- This model creates a table for accounting analytic accounts, transforming data from the stg_odoo__account_analytic_accounts source table.
--- It includes basic account information along with a custom field to categorize accounts based on their name.
+WITH vehicle_accounts AS (
+    SELECT
+        analytic_account_id,
+        vehicle_id
+    FROM {{ ref('dim_vehicles') }}
+    WHERE analytic_account_id IS NOT NULL
+)
 
 SELECT
     id AS analytic_account_id, -- Unique identifier for the analytic account
@@ -12,6 +17,8 @@ SELECT
         WHEN name LIKE 'FLEET/%' THEN 'Vehicle'
         ELSE 'Accounting' -- Default category for other account names
     END AS analytic_account_type,
+    b.vehicle_id,
     state AS analytic_account_state -- Current state of the account
-FROM {{ ref('stg_odoo__account_analytic_accounts') }}
+FROM {{ ref('stg_odoo__account_analytic_accounts') }} a
+LEFT JOIN vehicle_accounts b ON a.id = b.analytic_account_id
 WHERE active IS TRUE -- Filtering to include only active accounts
