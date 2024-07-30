@@ -112,3 +112,8 @@ SELECT
     UNION ALL
     SELECT
         681, 80000, 693, 0.085, -0.01
+    
+    -- Atto 3 Athlon
+    UNION ALL
+    SELECT
+        697, 65000, 714.75, 0.0185, -0.0185
