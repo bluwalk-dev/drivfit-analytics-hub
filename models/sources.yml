@@ -48,6 +48,7 @@ sources:
       - name: support_ticket
       - name: support_ticket_category
       - name: support_ticket_theme
+      - name: tolls
       - name: vehicle_category
 
   - name: quatenus
@@ -55,3 +56,8 @@ sources:
     tables:
       - name: extendedEvents
       - name: journal
+  
+  - name: via_verde
+    database: drivfit-data-warehouse
+    tables:
+      - name: statement
