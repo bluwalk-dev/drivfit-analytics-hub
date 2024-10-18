@@ -19,6 +19,7 @@ sources:
       - name: account_move
       - name: account_journal
       - name: account_payment
+      - name: billable_item
       - name: fleet_vehicle
       - name: fleet_vehicle_deal
       - name: fleet_vehicle_damage_log
@@ -34,6 +35,7 @@ sources:
       - name: hr_employee
       - name: hr_department
       - name: ir_translation
+      - name: lease_contract
       - name: product_product
       - name: product_template
       - name: product_category
