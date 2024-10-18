@@ -9,6 +9,7 @@ WITH daily_odometer AS (
 SELECT
     a.date,
     b.year_month,
+    b.year_week,
     a.vehicle_id,
     a.odometer
 FROM daily_odometer a
