@@ -22,6 +22,7 @@ SELECT
     e.analytic_account_name,
     IFNULL(a.vehicle_id, e.vehicle_id) vehicle_id,
     a.full_reconcile_id,
+    a.billable_item_id,
     a.payment_id,
     a.create_date
 FROM {{ ref('stg_odoo__account_move_lines') }} a
