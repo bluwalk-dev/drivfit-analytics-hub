@@ -6,6 +6,7 @@ SELECT
     d.contact_name,
     a.move_id,
     a.move_name,
+    f.type as move_type,
     a.parent_state move_state,
     a.journal_id,
     b.journal_name,
@@ -24,10 +25,11 @@ SELECT
     a.full_reconcile_id,
     a.billable_item_id,
     a.payment_id,
-    a.create_date
+    a.create_date    
 FROM {{ ref('stg_odoo__account_move_lines') }} a
 LEFT JOIN {{ ref('dim_accounting_journals') }} b ON a.journal_id = b.journal_id
 LEFT JOIN {{ ref('dim_accounting_accounts') }} c ON a.account_id = c.account_id
 LEFT JOIN {{ ref('dim_contacts') }} d ON a.partner_id = d.contact_id
 LEFT JOIN {{ ref('dim_accounting_analytic_accounts') }} e ON a.analytic_account_id = e.analytic_account_id
-ORDER BY date DESC
+LEFT JOIN {{ ref('stg_odoo__account_moves') }} f ON a.move_id = f.id
+ORDER BY a.date DESC
