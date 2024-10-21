@@ -13,7 +13,7 @@ SELECT
     END as contract_id,
     CASE 
         WHEN rc_contract_id IS NOT NULL THEN 'short-term'
-        ELSE 'mid-Term'
+        ELSE 'mid-term'
     END as contract_type,
     contract_name,
     period_start,
