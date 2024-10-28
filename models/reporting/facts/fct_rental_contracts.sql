@@ -21,7 +21,12 @@ SELECT
     start_kms,
     end_kms,
     active,
-    rate_base_value as daily_base_price
+    rate_base_value as daily_base_price,
+    protection_daily_value as daily_protection_price,
+    mileage_value as daily_mileage_price,
+    mileage_limit as daily_mileage_limit,
+    mileage_excess as mileage_excess_price
+    
 FROM {{ ref('stg_odoo__rental_contracts') }} a
 LEFT JOIN {{ ref('dim_vehicles') }} b ON a.vehicle_id = b.vehicle_id
 
