@@ -6,6 +6,7 @@ SELECT
     a.active,
     a.driver_id,
     e.contact_name as driver_name,
+    e.contact_vat as driver_vat,
     a.client_id as customer_id,
     g.contact_name customer_name,
     b.vehicle_id,
