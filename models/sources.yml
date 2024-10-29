@@ -20,6 +20,7 @@ sources:
       - name: account_journal
       - name: account_payment
       - name: billable_item
+      - name: booking
       - name: fleet_vehicle
       - name: fleet_vehicle_deal
       - name: fleet_vehicle_damage_log
