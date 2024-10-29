@@ -13,13 +13,16 @@ SELECT
     b.vehicle_deal_id,
     b.vehicle_deal_name, -- Atenção que talvez tenhamos o mesmo carro em mais do que um deal
     b.vehicle_name,
-
-    a.start_station_id as booking_pickup_station,
-    c.station_name,
+    start_datetime as booking_pickup_datetime,
+    a.start_station_id as booking_pickup_station_id,
+    c.station_name as booking_pickup_station_name,
     
     a.rate_base_id,
+    h.weekly_value as booking_rate_weekly_price,
+    h.public_name as booking_rate_name,
+    h.contract_type as booking_contract_type,
     a.rate_mileage_id,
-    a.mileage_limit,
+    (a.mileage_limit * 7) as booking_mileage_limit,
     a.mileage_excess,
     a.rate_protection_id
     
