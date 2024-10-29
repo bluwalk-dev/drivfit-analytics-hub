@@ -25,7 +25,9 @@ SELECT
     a.rate_mileage_id,
     (a.mileage_limit * 7) as booking_mileage_limit,
     a.mileage_excess,
-    a.rate_protection_id
+    a.rate_protection_id,
+
+    a.create_date
     
 FROM {{ ref('stg_odoo__bookings') }} a
 LEFT JOIN {{ ref('dim_vehicles') }} b ON a.vehicle_id = b.vehicle_id
