@@ -15,7 +15,9 @@ SELECT * FROM (
         'Drivfit' as supplier_name,
         'car_rental' vehicle_contract_type,
         'short-term' vehicle_contract_length,
-        6 as service_partner_id
+        vehicle_transmission_letter,
+        vehicle_fuel_type,
+        vehicle_fuel_letter
     from {{ ref('fct_rental_contracts') }} a
     left join {{ ref('dim_contacts') }} b on a.driver_id = b.contact_id
     where customer_id = 21
@@ -38,7 +40,9 @@ SELECT * FROM (
         'Drivfit' as supplier_name,
         'car_rental' vehicle_contract_type,
         'mid-term' vehicle_contract_length,
-        6 as service_partner_id
+        vehicle_transmission_letter,
+        vehicle_fuel_type,
+        vehicle_fuel_letter
     from {{ ref('fct_lease_contracts') }} a
     left join {{ ref('dim_contacts') }} b on a.driver_id = b.contact_id
     where customer_id = 21
