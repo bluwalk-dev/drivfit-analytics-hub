@@ -16,6 +16,7 @@ sources:
       - name: account_analytic_line
       - name: account_partial_reconcile
       - name: account_move_line
+      - name: account_move_line_account_tax_rel
       - name: account_move
       - name: account_journal
       - name: account_payment
