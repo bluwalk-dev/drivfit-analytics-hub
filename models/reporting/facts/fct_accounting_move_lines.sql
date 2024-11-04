@@ -18,7 +18,7 @@ SELECT
     a.debit,
     a.credit,
     a.balance,
-    a.tax_line_id,
+    g.account_tax_id as line_tax_id,
     a.analytic_account_id,
     e.analytic_account_name,
     IFNULL(a.vehicle_id, e.vehicle_id) vehicle_id,
@@ -32,4 +32,5 @@ LEFT JOIN {{ ref('dim_accounting_accounts') }} c ON a.account_id = c.account_id
 LEFT JOIN {{ ref('dim_contacts') }} d ON a.partner_id = d.contact_id
 LEFT JOIN {{ ref('dim_accounting_analytic_accounts') }} e ON a.analytic_account_id = e.analytic_account_id
 LEFT JOIN {{ ref('stg_odoo__account_moves') }} f ON a.move_id = f.id
+LEFT JOIN {{ ref('stg_odoo__account_move_line_account_tax_rel') }} g ON a.id = g.account_move_line_id
 ORDER BY a.date DESC
