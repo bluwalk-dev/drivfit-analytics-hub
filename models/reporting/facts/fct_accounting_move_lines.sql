@@ -15,6 +15,7 @@ SELECT
     a.account_id,
     c.account_name,
     c.account_code,
+    c.account_internal_group,
     a.debit,
     a.credit,
     a.balance,
