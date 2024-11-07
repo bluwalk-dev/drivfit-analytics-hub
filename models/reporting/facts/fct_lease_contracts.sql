@@ -18,10 +18,11 @@ SELECT
     a.end_date_estimated,
     a.start_kms,
     a.end_kms,
-    a.wk_rent_price,
-    a.wk_included_mileage,
-    a.extra_mileage_price,
-    a.rate_base_id,
+    
+    j.rate_base_id,
+    j.rate_base_wk_price as wk_rent_price,
+    j.rate_mileage_wk_limit as wk_included_mileage,
+    k.mileage_excess as extra_mileage_price,
 
     -- Transmission and fuel type details
     IFNULL(i.transmission, b.vehicle_transmission) as vehicle_transmission_letter,  -- Letter representing the transmission type
@@ -39,8 +40,11 @@ FROM {{ ref('stg_odoo__lease_contracts') }} a
 LEFT JOIN {{ ref('dim_vehicles') }} b ON a.vehicle_id = b.vehicle_id
 LEFT JOIN {{ ref('dim_stations') }} c ON a.start_station_id = c.station_id
 LEFT JOIN {{ ref('dim_stations') }} d ON a.end_station_id = d.station_id
-
-LEFT JOIN {{ ref('stg_odoo__rate_bases') }} h ON a.rate_base_id = h.id
+LEFT JOIN {{ ref('stg_odoo__lease_contract_conditions') }} j ON a.conditions_id = j.id
+LEFT JOIN {{ ref('stg_odoo__rate_bases') }} h ON j.rate_base_id = h.id
+LEFT JOIN {{ ref('stg_odoo__rate_mileages') }} k ON j.rate_mileage_id = k.id
 LEFT JOIN {{ ref('stg_odoo__vehicle_categories') }} i ON h.vehicle_category_id = i.id  -- Joining with vehicle categories
+
+
 
 WHERE a.active is true
