@@ -38,10 +38,13 @@ sources:
       - name: hr_department
       - name: ir_translation
       - name: lease_contract
+      - name: lease_contract_condition
       - name: product_product
       - name: product_template
       - name: product_category
       - name: rate_base
+      - name: rate_mileage
+      - name: rate_protection
       - name: rental_contract
       - name: res_country_city
       - name: res_country
