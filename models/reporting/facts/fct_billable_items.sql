@@ -11,6 +11,7 @@ SELECT
         WHEN rc_contract_id IS NOT NULL THEN rc_contract_id
         ELSE opl_contract_id
     END as contract_id,
+    lease_contract_conditions_id as opl_conditions_id,
     CASE 
         WHEN rc_contract_id IS NOT NULL THEN 'short-term'
         ELSE 'mid-term'
