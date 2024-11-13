@@ -20,8 +20,7 @@ transformation as (
         CAST (property_hs_is_closed AS BOOL) AS is_closed,
         CAST (owner_id AS INT64) AS owner_id,
         CAST (property_amount AS FLOAT64) AS deal_value,
-        0 AS deal_team_bonus,
-        --CAST (property_deal_bonus_value AS FLOAT64) AS deal_team_bonus,
+        CAST (property_deal_bonus_value AS FLOAT64) AS deal_team_bonus,
 
         CAST (property_closedate AS TIMESTAMP) AS close_date,
         CAST (property_createdate AS TIMESTAMP) AS create_date
