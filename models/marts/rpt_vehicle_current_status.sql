@@ -1,6 +1,6 @@
 SELECT
     c.vehicle_license_plate,
-    c.vehicle_model,
+    c.vehicle_name,
     b.station_name,
     b.station_location,
     a.status,
