@@ -4,6 +4,7 @@ SELECT
     a.state as lease_contact_state,
     a.customer_id,
     driver_id,
+    a.booking_id,
     b.vehicle_id,
     b.vehicle_license_plate,
     b.vehicle_deal_id,
@@ -44,7 +45,4 @@ LEFT JOIN {{ ref('stg_odoo__lease_contract_conditions') }} j ON a.conditions_id 
 LEFT JOIN {{ ref('stg_odoo__rate_bases') }} h ON j.rate_base_id = h.id
 LEFT JOIN {{ ref('stg_odoo__rate_mileages') }} k ON j.rate_mileage_id = k.id
 LEFT JOIN {{ ref('stg_odoo__vehicle_categories') }} i ON h.vehicle_category_id = i.id  -- Joining with vehicle categories
-
-
-
 WHERE a.active is true
