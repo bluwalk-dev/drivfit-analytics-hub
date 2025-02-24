@@ -1,3 +1,15 @@
+WITH contract_conditions AS (
+    select 
+        lease_contract_id, 
+        min(effective_date) as effective_date,
+        case 
+            when count(termination_date) < count(*) then null 
+            else max(termination_date) 
+        end as termination_date
+    from {{ ref('stg_odoo__lease_contract_conditions') }}
+    group by lease_contract_id
+)
+
 SELECT
     a.id as lease_contract_id,
     a.name as lease_contract_name,
@@ -16,6 +28,8 @@ SELECT
     a.end_inspection_id,
     CAST(start_date AS DATE) start_date,
     CAST(end_date AS DATE) end_date,
+    CAST(cc.effective_date AS DATE) billing_start_date,
+    CAST(cc.termination_date AS DATE) billing_end_date,
     a.end_date_estimated,
     a.start_kms,
     a.end_kms,
@@ -45,4 +59,5 @@ LEFT JOIN {{ ref('stg_odoo__lease_contract_conditions') }} j ON a.conditions_id 
 LEFT JOIN {{ ref('stg_odoo__rate_bases') }} h ON j.rate_base_id = h.id
 LEFT JOIN {{ ref('stg_odoo__rate_mileages') }} k ON j.rate_mileage_id = k.id
 LEFT JOIN {{ ref('stg_odoo__vehicle_categories') }} i ON h.vehicle_category_id = i.id  -- Joining with vehicle categories
+LEFT JOIN contract_conditions cc ON cc.lease_contract_id = a.id
 WHERE a.active is true
